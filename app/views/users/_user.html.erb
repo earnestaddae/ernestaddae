@@ -1,0 +1,22 @@
+<% if user.authored_articles.any? %>
+  <div class="card mt-4 mb-4">
+    <p class="card-header h3"><%= user&.full_name %></p>
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-3 align-self-center">
+            <%= link_to user_path(user) do  %>
+              <%= gravatar_image_tag(user&.email, :alt => user, class: "rounded-circle img-fluid ml-5 mt-3") %>
+            <% end %>
+          </div>
+          <div class="col text-justify">
+            <%= markdown(truncate(user&.profile&.bio, length: 200)) %>
+
+            <%= link_to "» More about #{user}", user_path(user), class: "card-link" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

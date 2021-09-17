@@ -1,0 +1,5 @@
+<%= bootstrap_form_with(model: [article, comment], local: true, label_errors: true) do |form| %>
+  <%= form.text_area :body, placeholder: "Write your comment (Markdown supported)", size: "10x5", hide_label: true, help: "Markdown syntax allowed." %>
+
+  <%= form.submit "Post Comment", class: "btn btn-success" %>
+<% end %>

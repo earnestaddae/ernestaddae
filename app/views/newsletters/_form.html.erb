@@ -1,0 +1,6 @@
+<%= bootstrap_form_with(model: newsletter, local: true, label_errors: true) do |form| %>
+  <%= form.text_field :name, placeholder: "Enter name" %>
+  <%= form.email_field :email, placeholder: "Enter email" %>
+
+  <%= form.submit "Get the Newsletter »", class: "btn btn-danger btn-block" %>
+<% end %>

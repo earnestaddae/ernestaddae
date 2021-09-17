@@ -1,0 +1,34 @@
+<div class="container mt-4 mb-4">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="font-weight-bold text-center">Log in</h2>
+        </div>
+        <div class="card-body p-4">
+          <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+            <% if devise_mapping.rememberable? %>
+              <%= f.check_box :remember_me %>
+              <%#= f.label :remember_me %>
+            <% end %>
+            <!-- recaptcha tag -->
+            <%= flash[:recaptcha_error] %>
+            <%#= recaptcha_tags %>
+            <div class="m-2"></div>
+              <%= f.primary "Log in" %>
+          <% end %>
+        </div>
+        <div class="card-footer">
+          <%= render "devise/shared/links" %>
+        </div>
+       </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

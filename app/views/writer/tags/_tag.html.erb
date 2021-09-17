@@ -1,0 +1,5 @@
+<!-- <span class="ml-1 fa fa-tags"></span> -->
+<span class="tag">
+  <%#= link_to "<span></span>".html_safe, article_remove_tag(article, tag), method: :delete, remote: true, class: "remove", title: "Remove tag" %>
+  <%= link_to tag.name, tag_path(tag), class: "badge badge-light text-muted p-2" %>
+</span>

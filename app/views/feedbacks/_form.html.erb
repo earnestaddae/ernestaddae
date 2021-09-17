@@ -1,0 +1,12 @@
+<%= bootstrap_form_with(model: feedback, local: true, label_errors: true) do |form| %>
+  <%= form.text_area :message, size: "20x15", hide_label: true, placeholder: "Please type your Feedback here..." %>
+  <%= form.text_field :name, hide_label: true, placeholder: "Your name (optional)" %>
+  <%= form.email_field :email, hide_label: true, placeholder: "Your email (optional)" %>
+
+  <!-- recaptcha to prevent bots sending feedback -->
+  <div class="mt-3 mb-3">
+    <%#= invisible_recaptcha_tags %>
+  </div>
+
+  <%= form.submit "Send Us Your Feedback »", class: "btn btn-danger btn-block" %>
+<% end %>

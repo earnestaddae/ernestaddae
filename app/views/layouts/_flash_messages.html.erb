@@ -1,0 +1,12 @@
+<% flash.each do |key, message| %>
+  <div class="text-center alert alert-<%= key %> alert-dismissible fade show mt-5" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span></button>
+    <div class="media">
+      <div class="media-body ml-2">
+        <i class="<%= key == 'notice' ? 'fa fa-check' : 'fa fa-exclamation-triangle' %>"></i>
+        <strong><%= key == 'notice' ? 'Success!' : 'Error!' %></strong> <%= message %>
+      </div>
+    </div>
+  </div>
+<% end %>

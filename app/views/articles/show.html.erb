@@ -1,0 +1,155 @@
+<% title @article.title %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-12">
+      <div class="row">
+        <div class="col-12 mb-3">
+          <div class="card border-0">
+            <div class="card-img">
+              <% if @article.attachment.attached? %>
+                <%= image_tag(@article.attachment, class: "card-img-top m-0 p-0 rounded") %>
+                <!-- <p>
+                  <%#= link_to @article.attachment.filename,
+                  rails_blob_path(@article.attachment, disposition: 'attachment') %>
+                  (<%#= number_to_human_size(@article.attachment.attachment.blob.byte_size) %>)
+                </p> -->
+              <% else %>
+                <%= image_tag("https://www.dropbox.com/s/ct1tog1jlao40ff/banner.png?dl=1", class: "card-img-top m-0 p-0 rounded") %>
+              <% end %>
+            </div>
+            <div class="card-body m-0 p-0 pt-3">
+              <h1 class="card-title h2 my-0 py-0 text-capitalize font-weight-bold"><%= @article.title %></h1>
+              <p class="mb-0 mt-2">
+                <span class="text-muted">
+                by <%= link_to @article&.author&.full_name, "#author", class: "text-muted" %>
+                  <span class="ml-2 fa fa-clock-o"></span> <%= @article&.published_at&.strftime("%b %e, %Y") %>
+                  <span class="ml-2 mr-1 fa fa-comments"></span>
+                  <%= link_to "#comment", class: "text-muted" do %>
+                    <span class="comment-count"><%= pluralize(@article.comments.count, "Comment") %></span>
+                  <% end %>
+                  <span class="ml-2 fa fa-list-alt"></span> <%= link_to @article&.category&.name, category_path(@article.category), class: "badge badge-danger p-1" %>
+
+                  <% if @article.tags.any? %>
+                    <span class="tags">
+                     <i class="fa fa-tags ml-2"></i> <%= render @article.tags %>
+                    </span>
+                  <% end %>
+                </span>
+              </p>
+            </div>
+            <div class="d-sm-flex flex-row justify-content-between my-2">
+              <div class="btn-group mb-0">
+                <%= like_button(@article) %>
+                <%= mark_button(@article) %>
+                <%= bookmark_button(@article) %>
+              </div>
+              <%= render "shared/social_share" %>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="col-12 mt-4 mb-4 bg-light p-4">
+        <h5>Table of Content</h5>
+        <nav class="table-content sticky-top" style="z-index:1;">
+          <%= markdown_header(@article.body) %>
+        </nav>
+      </div>
+      <div class="col-12">
+        <div class="article-body text-justify">
+          <%= markdown(@article.body) %>
+        </div>
+      </div>
+      <hr>
+      <% if @article&.author&.profile %>
+        <div class="col-12">
+          <div class="card" id="author">
+            <div class="card-header">
+              <p class="h3">About <strong class="text-capitalize"><%= @article&.author&.full_name %></strong></p>
+            </div>
+            <div class="card-body">
+              <div class="container p-0">
+                <div class="row">
+                  <div class="col-12 col-md-3 align-self-right">
+                    <%= link_to user_path(@article.author) do  %>
+                      <%= gravatar_image_tag(@article&.author&.email, :alt => @article&.author, class: "rounded-circle img-fluid ml-5 mt-5 gravatar_image_article") %>
+                    <% end %>
+                  </div>
+                  <div class="col mt-3">
+                    <p>
+                      <%= markdown(truncate(@article&.author&.profile&.bio, length: 200)) %>
+                    </p>
+                    <%= link_to "» More about #{@article&.author}", user_path(@article.author), class: "card-link" %>
+                  </div>
+                </div>
+                <hr>
+                <!-- <div class="col-12 mt-3"> -->
+                  <h6>Subscribe below to get future posts from <%= @article&.author&.full_name %></h6>
+                  <%= render partial: "subscriptions/form", locals: { user: @article&.author } %>
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="mt-5"></div>
+      <% if @article.comments.any? %>
+        <div class="col-12">
+          <div class="card" id="comment">
+            <div class="card-header">
+              <h5 class="font-weight-bold">Discussions - <%= @article.comments.count %></h5>
+            </div>
+            <div class="card-body">
+              <% @article.comments.reverse.each do |comment| %>
+               <%= render comment %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="col-12">
+        <% unless user_signed_in? %>
+        <div class="mt-5 mb-5">
+          <%= link_to "Register", new_user_registration_path %> or
+          <%= link_to "Sign in", new_user_session_path %> to join the discussion
+        </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <div class="article-comment mt-5 mb-5">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="font-weight-bold">You are commenting publicly as:</h6>
+                <!-- <p>You are commenting publicly as:</p> -->
+                <div class="container">
+                  <div class="row">
+                    <div class="col-2 col-md-1 p-0 align-self-center">
+                      <%= gravatar_image_tag(current_user&.email, :alt => current_user, class: "align-self-center rounded-circle img-fluid w-100") %>
+                    </div>
+                    <div class="col pr-0 d-flex align-items-center">
+                      <p><strong><%= current_user %></strong>
+                        <small>(<%= link_to "change", account_root_path %>)</small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <%= render "comments/form", article: @article, comment: @comment %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-4 col-12">
+      <%= render "shared/index_sidebar" %>
+
+      <div class="col-12 mt-4">
+        <h5>Table of Content</h5>
+        <nav class="table-content sticky-top" style="z-index:1;">
+          <%= markdown_header(@article.body) %>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

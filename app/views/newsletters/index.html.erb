@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8 article">
+      <div class="article-body page-body">
+        <h2 class="text-center text-muted" id="newsletter">Receive Weekly Programming Articles</h2>
+        <h1 class="text-center display-3 mb-5" id="earnest">Get The Earnest Newsletter 💌</h1>
+        <p class="text-justify">Some of the best content we post is email only and reserved for our email newsletter members. </p>
+
+        <p class="text-justify">Click the link below and enter your email address to join the Earnest newsletter. The newsletter is free and you can unsubscribe any time:</p>
+
+        <%# <div class="alert alert-danger" role="alert">
+          <p>
+            <strong>Join Now:</strong>
+            <a href="" class="alert-link" data-toggle="modal" data-target="#modal-newsletter" data-focus="false">Click here to join the Earnest Newsletter</a> and you'll never miss another tutorial, course update, or post.
+          </p>
+        </div> %>
+
+        <%# <h2 class="text-center" id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link"></a></h2> %>
+
+        <%# <p class="text-justify">
+          <strong>How often will I get your emails?</strong>
+          We send out a newsletter email once or twice a week. Besides that we have several “tracks” for topics you can join to learn more about them via email.</a>
+        </p> %>
+
+        <%# <p class="text-justify">
+          <strong>What if I want out?</strong>
+          No problem, just click the unsubscribe link in any of the emails. That way you can unsubscribe from topics you’re no longer interested in or from all mailings.
+        </p> %>
+
+        <%# <p class="text-justify">
+          <strong>Is this all just a bunch of marketing rah-rah?</strong>
+          Nope. We started our newsletter to make a connection with the folks who read our articles. Many of the emails you’ll receive are based on questions that we got from readers like you. Feel free to reply back to any of our emails! We read every single reply and we’ll do our best to get back to you.
+        </p> %>
+
+        <h2 class="text-center" id="tutorial">Don’t miss our next article...</h2>
+
+        <div class="alert alert-danger" role="alert">
+          <p>
+            <strong>Join Now:</strong>
+            <a href="" class="alert-link" data-toggle="modal" data-target="#modal-newsletter" data-focus="false">Click here to join the Earnest Newsletter</a> and you'll never miss another tutorial, course update, or post.
+          </p>
+        </div>
+
+         <p class="text-muted my-3">
+          <i class="fa fa-lock" aria-hidden="true"></i> We take your privacy seriously. No spam ever, unsubscribe any time. We will never share your email address with a third party. See our
+          <a class="text-muted" href="/privacy-policy/">privacy policy here</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-newsletter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <p class="modal-title text-muted text-center mb-0 mt-2" id="exampleModalLongTitle">Join the Earnest Newsletter</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <%= render "form", newsletter: @newsletter %>
+      </div>
+    </div>
+  </div>
+</div>

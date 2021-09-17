@@ -1,0 +1,8 @@
+<%= bootstrap_form_with(model: [ :writer, profile ], url: writer_profile_path, local: true, label_errors: true) do |form| %>
+
+  <%= form.text_field :first_name %>
+  <%= form.text_field :last_name %>
+  <%= form.text_area :bio, label: "Tell us something brief about yourself", help: "Markdown syntax allowed!", size: "20x10" %>
+
+  <%= form.primary %>
+<% end %>

@@ -1,0 +1,19 @@
+@import "bootstrap";
+@import "font-awesome";
+
+.tag {
+//   @extend .mr-1, .mb-1, .border;
+//   color: #333;
+//   font-size: 85%;
+//   display: inline-block;
+
+  a {
+    &.remove {
+      font-family: "FontAwesome";
+      @extend .fa-close;
+      text-decoration: none;
+      color: #333;
+      // font-size: 85%;
+    }
+  }
+}

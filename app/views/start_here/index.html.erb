@@ -1,0 +1,100 @@
+<% title "Start Here" %>
+
+<section class="container mt-5">
+  <section class="row">
+    <section class="col-sm-8 offset-sm-2">
+      <h1 class="text-center font-weight-bold mb-5">Learn Ruby Programming </h1>
+      <!-- <br> By Example -->
+
+      <div class="alert alert-info">
+        <h3 class="text-capitalize m-0">How can we improve?</h3>
+
+        <p class="mt-2 lead">
+          We're constantly working to improve this community to make it more valuable, if you have a moment to share your thoughts or ideas on how we can make it <em><q>insanely great</q></em>, please click here:
+        </p>
+
+        <div class="text-center">
+          <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+              <%= link_to "Share Your Feedback #{forward_arrow}", new_feedback_path, class: "btn btn-danger btn-lg btn-block shadow rounded mb-1" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-justify" id="message">
+        <p class="mt-4">
+          If you’re looking for a community of Rubyists delivering content to help you become a better programmer, you’ve come to the right place.
+        </p>
+
+        <p class="mt-4">
+          At <strong>Earnest Ruby</strong> you can learn all things Ruby from the ground up. Content covering the absolute basics to advanced Ruby, to web development with Rails, Sinatra, Hanami, Roda, and beyond.
+        </p>
+
+        <p class="mt-4">
+          <strong>Earnest Ruby</strong> focuses on scholarly &amp; sustainable Ruby tutorials written by true Rubyists. We do this by fostering a community of Ruby Developers who have mastered what other people have figured out to share their experience, strategies, and techniques to becoming an effective coder. After all, it’s much easier to benefit from lessons that other people have already paid the price for than making all the mistakes yourself.
+        </p>
+
+        <p class="mt-4">
+          You won’t find fads, sound-bytes, or strategies in programming that work for a while then fail when things change. Instead you’ll find lessons and insights that makes things easier, not harder.
+        </p>
+      </div>
+
+      <h2 class="text-capitalize text-center">Where do I start?</h2>
+      <section id="choose-path">
+        <div class="card mt-5">
+          <div class="card-header p-0">
+            <%= link_to ruby_basics_path do  %>
+              <%= image_tag("https://www.dropbox.com/s/hnft0ev0td9dzwf/children.jpg?dl=1", class: "img-fluid") %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <%= link_to ruby_basics_path, class: "text-secondary" do %>
+              <h4 class="card-title">
+                <strong>I’m new to Ruby and to programming in general</strong> — How can I learn the basics of Ruby?
+              </h4>
+            <% end %>
+            <%= link_to "Learn Ruby Fundamentals #{forward_arrow}", ruby_basics_path, class: "btn btn-danger btn-lg btn-block" %>
+          </div>
+        </div>
+        <div class="card mt-5">
+          <div class="card-header p-0">
+            <%= link_to ruby_intermediate_path do  %>
+              <%= image_tag("https://www.dropbox.com/s/hnft0ev0td9dzwf/children.jpg?dl=1", class: "img-fluid") %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <%= link_to ruby_intermediate_path, class: "text-secondary" do %>
+              <h4 class="card-title">
+                <strong>I’m an intermediate Ruby developer</strong> — How do I take my skills and my productivity to the next level?
+              </h4>
+            <% end %>
+            <%= link_to "Write Beautiful Ruby Code #{forward_arrow}", ruby_intermediate_path, class: "btn btn-danger btn-lg btn-block" %>
+          </div>
+        </div>
+        <div class="card mt-5">
+          <div class="card-header p-0">
+            <%= link_to learn_rails_path do  %>
+              <%= image_tag("https://www.dropbox.com/s/hnft0ev0td9dzwf/children.jpg?dl=1", class: "img-fluid") %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <%= link_to learn_rails_path, class: "text-secondary" do %>
+              <h4 class="card-title">
+                <strong>I’ve got experience with the Ruby programming language</strong>  — How do I get up to speed with building applications as quickly as possible?
+              </h4>
+            <% end %>
+            <%= link_to "Learn Web Development with Ruby #{forward_arrow}", learn_rails_path, class: "btn btn-danger btn-lg btn-block" %>
+          </div>
+        </div>
+      </section>
+      <p class="text-center lead mt-5">
+        <%= link_to "Or, Browse The Latest Tutorials #{forward_arrow}", articles_path, class: "nav-link" %>
+      </p>
+
+      <h2 class="text-capitalize text-center">Who We Are and Where to Find Us</h2>
+      <p class="text-center mb-5">
+        Founded and created by <%= link_to "Ernest Addae", "http:/www.earnestaddae.me" %> with the help of <%= link_to "Smart Snow", "https://www.twitter.com/kingsmartsnow", target: "_blank" %>. <strong>Earnest Ruby</strong> is looking for a small group of exceptional people to run this project.
+      </p>
+    </section>
+  </section>
+</section>

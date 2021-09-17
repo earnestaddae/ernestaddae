@@ -1,0 +1,40 @@
+<div class="container mt-4 mb-4">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="font-weight-bold text-center">Edit <%= resource_name.to_s.humanize %></h2>
+        </div>
+        <div class="card-body">
+          <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, label_errors: true) do |f| %>
+             <%#= render "devise/shared/error_messages", resource: resource %>
+            <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+            <%= f.email_field :email, autocomplete: "email" %>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <%= f.password_field :password, autocomplete: "new-password", help: "#{@minimum_password_length if @minimum_password_length } characters minimum (leave blank if you don't want to change it)" %>
+
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+
+            <%= f.password_field :current_password, autocomplete: "current-password", help: "we need your current password to confirm your changes" %>
+
+              <%= f.primary "Update" %>
+          <% end %>
+        </div>
+
+        <div class="card-footer">
+          <h5>Cancel my account</h5>
+
+          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-sm btn-danger" %>
+          </p>
+
+          <%= link_to "Back", :back, class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,9 @@
+<% unless user_signed_in? %>
+  <div class="mx-3 py-5 mb-5 mt-0 alert alert-light border text-dark">
+    <h3 class="text-center h1 mt-0 mb-3 font-weight-bold">Not Sure Where to Start?</h3>
+    <p class="lead text-center">At <strong class="font-weight-bold">Earnest Ruby</strong> you can learn all things Ruby from the ground up. Content covering the absolute basics to advance of Ruby, to web development with Rails, Sinatra, Hanami, and beyond:</p>
+    <p class="text-center mt-4">
+      <%= link_to "Start Your Ruby Journey »", start_path, class: "btn btn-danger btn-lg py-2" %>
+    </p>
+  </div>
+<% end %>

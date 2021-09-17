@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield :title %>
+      <% else %>
+       Ernest Addae - Personal Content Publishing Platform
+      <% end %>
+    </title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column bg-ruby">
+      <div class="container flex-row">
+        <a class="brand" href="/">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg" width="25" height="30" class="d-inline-block align-middle" alt="">
+          Ernest Addae
+        </a>
+      </div>
+    </nav>
+
+
+    <div class="container-fluid mt-2">
+      <%= render "layouts/flash_messages" %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

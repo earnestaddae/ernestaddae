@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400&display=swap");
+
+@import "bootstrap";
+@import "font-awesome";
+@import "rails_bootstrap_forms";
+@import "rouge_theme";
+
+* {
+  box-sizing: border-box;
+}
+
+// html {
+//   scroll-behavior: smooth;
+// }
+
+// @media screen and (prefers-reduced-motion: reduce) {
+//   html {
+//     scroll-behavior: auto;
+//   }
+// }
+
+body {
+  padding-top: 70px;
+  // font-family: Nunito Sans, sans-serif;
+  font-family: Roboto, sans-serif;
+  font-size: 1.1rem;
+  line-height: 180%;
+  color: #343b54;
+  font-weight: 400;
+
+  p {
+    font-family: Merriweather, serif;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Nunito, sans-serif;
+  font-weight: bold;
+}
+
+header {
+  @extend .pb-2, .mt-4, .mb-2, .border-bottom, .row;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @extend .col-sm-12, .col-md-6;
+  }
+
+  ul.actions {
+    @extend .col-sm-12, .col-md-6;
+    @extend .list-unstyled, .list-inline;
+
+    li {
+      @extend .list-inline-item;
+    }
+    text-align: right;
+  }
+}
+
+// button styling
+a.new,
+a.edit,
+a.delete {
+  @extend .btn;
+
+  &:before {
+    font-family: "FontAwesome";
+    padding-right: 0.5em;
+  }
+}
+
+a.new {
+  @extend .btn-success;
+
+  &:before {
+    @extend .fa-plus;
+  }
+}
+
+a.edit {
+  @extend .btn-primary;
+
+  &:before {
+    @extend .fa-pencil;
+  }
+}
+
+a.delete {
+  @extend .btn-danger;
+
+  &:before {
+    @extend .fa-trash;
+  }
+}
+
+// alerts styling for flash messages
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+// brand
+
+.brand {
+  @extend .navbar-brand;
+  font-family: Quicksand, sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  // color: #fff;
+}
+
+// navbar ruby
+.bg-ruby,
+.navbar-dark .navbar-nav .dropdown-menu {
+  // line-height: 110%;
+  // background-color: #E95840;
+  // background-color: #F4413A;
+  background-color: #f42946;
+
+  border: none;
+  margin: 0 0;
+
+  .dropdown-item {
+    color: #eee;
+  }
+
+  .dropdown-item:hover {
+    // background-color: #EF243D;
+    background-color: #18354c;
+    span.tutorials-link,
+    span.categories-link,
+    span.topics-link,
+    span.quizzes-link,
+    span.videos-link,
+    span.screencasts-link {
+      @extend .font-weight-bold;
+    }
+    span.tutorials-link {
+      color: #ff7e73;
+    }
+
+    span.categories-link {
+      color: #abe5b1;
+    }
+
+    span.topics-link {
+      color: #b8abe5;
+    }
+
+    span.quizzes-link {
+      color: #abe0e5;
+    }
+
+    span.videos-link {
+      color: #ef243d;
+    }
+
+    span.screencasts-link {
+      color: #3aedf4;
+    }
+  }
+}
+
+.nav-item .nav-link {
+  font-size: 1.1rem;
+}
+
+.gravatar_image {
+  @extend .rounded-circle;
+  width: 40px;
+  height: 40px;
+}
+
+.gravatar_image_article {
+  width: 100px;
+  height: 100px;
+}
+
+.table-content ul {
+  @extend .nav, .navbar-nav;
+
+  li a {
+    @extend .nav-link, .text-dark;
+
+    &:before {
+      font-family: "FontAwesome";
+      padding-right: 0.5em;
+      @extend .fa-chevron-right;
+    }
+  }
+}
+// for the menu when user signed in.
+.text-menu {
+  color: #18354c;
+}

@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <%= render "shared/favorite_sidebar" %>
+    <section class="col-md-11 col-lg-8 article">
+      <div class="mt-1 mb-4">
+        <div class="d-flex align-items-center justify-content-between">
+          <span class="text-muted">
+            <strong><%= pluralize(@articles.count, "article") %> found</strong>
+          </span>
+        </div>
+      </div>
+
+      <div class="articles">
+        <% @articles.each do |article| %>
+          <div class="container my-3">
+            <div class="row">
+              <div class="col-12 col-sm-4 align-self-top px-0">
+                <%= link_to article_path(article) do %>
+                  <%= image_tag("https://www.dropbox.com/s/ct1tog1jlao40ff/banner.png?dl=1", class: "rounded img-fluid w-100 my-0 bg-light") %>
+                <% end %>
+              </div>
+              <div class="col-12 col-sm-8 px-0 pl-sm-3 pt-2 pt-sm-0">
+                <%= link_to article_path(article), class: "stretched-link" do %>
+                  <h2 class="my-0 h5">
+                   <span class="text-capitalize"><%= article.title %></span>
+                   <%= bookmark_checker(article) %>
+                   <%= mark_checker(article) %>
+                   <%= like_checker(article) %>
+                   <!-- <span title="liked" class="float-right"><i class="fa fa-fw fa-heart text-danger"></i></span> -->
+                  </h2>
+                <% end %>
+                <p class="small text-muted my-0">
+                  <span class="mr-2"><%= article&.published_at&.strftime("%b %e, %Y") %></span>
+                  <span class="tags">
+                    <i class="fa fa-tags ml-2"></i> <%= render article.tags %>
+                  </span>
+                </p>
+                <p class="text-muted text-justify my-0 mt-1 small">
+                  <%= truncate(strip_tags(markdown(article.body)), length: 200) %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </section>
+  </div>
+</div>

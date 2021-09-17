@@ -1,0 +1,15 @@
+<%= bootstrap_form_with(model: [ :account, user ], local: true, label_errors: true) do |form| %>
+
+<div class="form-group">
+  <label class="col-form-label">Avatar picture:</label>
+  <p class="text-muted">
+    We use Gravatar, a service that associates an avatar image with your primary email address—<%= current_user.email %>  .
+    <%= avatar_profile(current_user) %>
+  </p>
+</div>
+
+  <%= form.text_field :username, label: "Display name:" %>
+
+  <%= link_to "Cancel", account_root_path, class: "btn btn-link float-right" %>
+  <%= form.submit "Save", class: "btn btn-success px-4 float-right" %>
+<% end %>

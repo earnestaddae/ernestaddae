@@ -1,0 +1,148 @@
+<% if user_signed_in? %>
+  <div class="d-flex justify-content-between align-items-center w-100 mt-0 mb-2">
+    <h2 class="my-0">
+      <%= link_to "Explore", root_path, class: "text-dark" %>
+    </h2>
+  </div>
+
+  <!-- key main items -->
+  <div class="card-deck mb-3">
+    <div class="card bg-ruby border-0">
+      <div class="card-body text-center">
+        <a class="btn text-white font-weight-bold" href="<%= search_index_path %>">
+          <i class="fa fa-fw mr-1 fa-graduation-cap text-menu"></i> Articles
+          <br>
+          <small class="text-white">In-depth articles and step-by-step video courses</small>
+        </a>
+      </div>
+    </div>
+
+    <div class="card bg-ruby border-0">
+      <div class="card-body text-center">
+      <a class="btn text-white font-weight-bold" href="<%= categories_path %>"><i class="fa fa-fw mr-1 fa-list text-menu"></i>Browse Categories
+        <br>
+        <small class="text-white">Focus on a specific area or skill level</small></a>
+      </div>
+    </div>
+
+    <div class="card bg-ruby border-0">
+      <div class="card-body text-center">
+      <a class="btn text-white font-weight-bold" href="<%= tags_path %>"><i class="fa fa-fw mr-1 fa-tags text-menu"></i>Browse Topics
+        <br>
+        <small class="text-white">Focus on a specific area topic</small></a>
+      </div>
+    </div>
+
+   <!--  <div class="card bg-ruby border-0">
+      <div class="card-body text-center">
+      <a class="btn text-white font-weight-bold" href="#"><i class="fa fa-fw mr-1 fa-trophy text-menu"></i>Quizzes
+        <br>
+        <small class="text-white">Check your learning progress</small></a>
+      </div>
+    </div> -->
+  </div>
+
+  <!-- <div class="card-deck mb-5">
+    <div class="card bg-ruby border-0">
+      <div class="card-body text-center">
+      <a class="btn text-white font-weight-bold" href="#"><i class="fa fa-fw mr-1 fa-slack text-menu"></i>Community Chat
+        <br>
+        <small class="text-white">Learn with other Rubyists</small></a>
+      </div>
+    </div>
+
+    <div class="card bg-ruby border-0">
+      <div class="card-body text-center">
+      <a class="btn text-white font-weight-bold" href="#"><i class="fa fa-fw mr-1 fa-building text-menu"></i>Office Hours
+        <br>
+        <small class="text-white">Live Q&amp;A calls with an expert from the Earnest Ruby Team</small></a>
+      </div>
+    </div>
+
+    <div class="card bg-ruby border-0">
+      <div class="card-body text-center">
+      <a class="btn text-white font-weight-bold" href="#"><i class="fa fa-fw mr-1 fa-podcast text-menu"></i>Podcast
+        <br>
+        <small class="text-white">Hear what’s new in the world of Ruby programming</small></a>
+      </div>
+    </div>
+
+    <div class="card bg-ruby border-0">
+      <div class="card-body text-center">
+      <a class="btn text-white font-weight-bold" href="#"><i class="fa fa-fw mr-1 fa-book text-menu"></i>Books
+        <br>
+        <small class="text-white">Round out your knowledge and learn offline</small></a>
+      </div>
+    </div>
+  </div> -->
+  <!-- end of key main  -->
+
+  <!-- BOOKMARKS -->
+  <div class="d-flex justify-content-between align-items-center w-100 mt-0 mb-2">
+    <h2 class="my-0">
+      <%= link_to "Your Bookmarks", bookmarks_path, class: "text-dark" %>
+    </h2>
+    <%= link_to "View All \u00BB", bookmarks_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+
+  <div class="row">
+    <% current_user.bookmarked_articles.limit(3).each do |article| %>
+    <div class="col-12 col-md-6 col-lg-4 mb-5">
+      <div class="card border-0">
+        <%= link_to article_path(article) do %>
+          <%= image_tag("https://www.dropbox.com/s/ct1tog1jlao40ff/banner.png?dl=1", class: "card-img-top m-0 p-0 rounded") %>
+        <% end %>
+        <div class="card-body m-0 p-0 mt-2">
+          <%= link_to article_path(article), class: "text-info" do %>
+            <h2 class="card-title h4 my-0 py-0">
+              <%= bookmark_checker(article) %>
+              <%= article.capitalize_title %>
+            </h2>
+          <% end %>
+          <p class="card-text">
+            <small class="text-muted">
+              <span class="fa fa-tags"></span>
+              <%= render article.tags %>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- COMPLETED -->
+   <div class="d-flex justify-content-between align-items-center w-100 mt-0 mb-2">
+    <h2 class="my-0">
+      <%= link_to "Review Marked Tutorials", marks_path, class: "text-dark" %>
+    </h2>
+    <%= link_to "View All \u00BB", marks_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+
+  <div class="row">
+    <% current_user.marked_articles.limit(3).each do |article| %>
+    <div class="col-12 col-md-6 col-lg-4 mb-5">
+      <div class="card border-0">
+        <%= link_to article_path(article) do %>
+          <%= image_tag("https://www.dropbox.com/s/ct1tog1jlao40ff/banner.png?dl=1", class: "card-img-top m-0 p-0 rounded") %>
+        <% end %>
+        <div class="card-body m-0 p-0 mt-2">
+          <%= link_to article_path(article), class: "text-success" do %>
+            <h2 class="card-title h4 my-0 py-0">
+              <%= mark_checker(article) %>
+              <%= article.capitalize_title %>
+            </h2>
+          <% end %>
+          <p class="card-text">
+            <small class="text-muted">
+              <span class="fa fa-tags"></span>
+              <%= render article.tags %>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+

@@ -1,0 +1,9 @@
+<div class="d-flex mb-0">
+  <%= form_with model: Subscription.new, url: subscribe_user_path(user), html: { class: "form-inline col pl-0", id: "home-search-form" } do |form| %>
+  <%= link_to "#", title: "Subscribe", class: "position-absolute" do %>
+    <i class="fa fa-envelope-o fa-fw text-muted pl-2"></i>
+  <% end %>
+    <%= form.text_field :email, class: "form-control form-control-lg w-100", style: "padding-left: 2rem;", maxlength: 50, placeholder: "Enter your email", aria_label: "Subscribe" %>
+  <% end %>
+  <button class="btn btn-danger col-3 px-2" type="submit" form="home-search-form" >Subscribe&nbsp;&#187;</button>
+</div>

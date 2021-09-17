@@ -1,0 +1,50 @@
+<%= bootstrap_form_with(model: [ :writer, article ], local: true, label_errors: true, inline_errors: true) do |form| %>
+  <%= form.text_field :title, hide_label: true, placeholder: "Tutorial title" %>
+  <%= form.text_field :summary, hide_label: true, placeholder: "Tutorial summary" %>
+  <%= form.collection_select :category_id, Category.all.order(:name), :id, :name, prompt: "Choose category", hide_label: true, class: "custom-select" %>
+  <%= form.collection_select :level_id, Level.all, :id, :name, hide_label: true, prompt: "Choose skill level", class: "custom-select" %>
+
+
+  <%= form.file_field :attachment, hide_label: true, placeholder: "Attach image" %>
+
+  <div class="form-group tags">
+    <%#= label_tag :tag_names, "Tags" %>
+    <% if article.tags.present? %>
+      <small class="ml-1 fa fa-tags"></small> <%= render article&.tags, article: article %>
+    <% end %>
+    <div class="mt-2 mb-2"></div>
+    <%= text_field_tag :tag_names, "", class: "form-control", placeholder: "Add tags. E.g rails, roda, active storage" %>
+  </div>
+
+  <!-- placeholder for publishing on integrated content publishing site Dev.to, Medium, Hackernoon & personal website -->
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item mr-3">
+      <a class="nav-link text-danger active" id="write-tab" data-toggle="tab" href="#write" role="tab" aria-controls="write" aria-selected="true">Write in Markdown</a>
+    </li>
+    <li class="nav-item mr-3">
+      <a class="nav-link text-danger" id="markdown-tab" data-toggle="tab" href="#markdown" role="tab" aria-controls="markdown" aria-selected="false">Upload Markdown</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active mt-2" id="write" role="tabpanel" aria-labelledby="write-tab">
+      <%= form.text_area :body, hide_label: true, placeholder: "Markdown supported", help: "Markdown syntax allowed!", size: "20x15" %>
+      <% if article.published? %>
+        <%= form.submit "Update", class: "btn btn-primary" %>
+        <%= form.submit "Unpublish", class: "btn btn-danger mr-2" %>
+      <% else %>
+        <%= form.submit "Publish", class: "btn btn-success mr-2" %>
+        <%= form.primary do
+          concat content_tag(:span, nil, class: 'fa fa-save')
+          concat ' Save as Draft'
+        end %>
+    <% end %>
+      <%#= form.primary "Save as Draft" %>
+    </div>
+    <div class="tab-pane fade mt-2" id="markdown" role="tabpanel" aria-labelledby="markdown-tab">
+      <% upload_url = upload_file_writer_article_path([:writer, article]) %>
+        <div class="dropzone uploader mb-2" data-url="<%= upload_url %>">
+      </div>
+    </div>
+  </div>
+<% end %>

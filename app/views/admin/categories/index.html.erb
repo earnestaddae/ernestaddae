@@ -1,0 +1,17 @@
+<div class="container">
+  <header>
+    <h1>Categories</h1>
+
+    <ul class="actions">
+      <li>
+        <%= link_to "New Category", new_admin_category_path, class: "new" %>
+      </li>
+    </ul>
+  </header>
+
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= link_to category.name, admin_category_path(category) %></li>
+    <% end %>
+  </ul>
+</div>

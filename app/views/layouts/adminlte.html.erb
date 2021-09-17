@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield :title %>
+      <% else %>
+       Earnest Ruby - Scholarly Ruby Articles &amp; Tutorials
+      <% end %>
+    </title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'adminlte', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'adminlte', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'adminlte', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body data-scrollbar-auto-hide="n" class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <%= render "layouts/writer/header" %>
+      <%= render "layouts/writer/sidebar" %>
+
+      <div class="content-wrapper">
+        <div class="content container-fluid">
+          <div class="container-fluid">
+            <%= render "layouts/flash_messages" %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+      <%= render "layouts/writer/footer" %>
+    <div>
+  </body>
+</html>

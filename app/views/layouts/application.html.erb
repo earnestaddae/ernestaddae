@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield :title %>
+      <% else %>
+       Ernest Addae - Personal Content Publishing Platform
+      <% end %>
+    </title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <%= render "layouts/base/navigation" %>
+
+    <div class="container-fluid mt-2">
+      <%= render "layouts/flash_messages" %>
+
+      <%= yield %>
+
+
+      <%= render "layouts/base/footer" %>
+    </div>
+  </body>
+</html>

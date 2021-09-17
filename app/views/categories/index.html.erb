@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8 col-12">
+      <h1 class="font-weight-bold">All Tutorial Categories</h1>
+      <p>Looking for something else? Try our site-wide search feature.</p>
+
+      <% @categories.each do |category| %>
+        <% if category.articles.any? %>
+         <%= render category %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-lg-4 col-12">
+      <%= render "shared/index_sidebar" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8 col-12">
+      <h1 class="font-weight-bold">All Tutorial Topics</h1>
+      <p>Looking for something else? Try our site-wide search feature.</p>
+
+      <div class="row">
+        <% @tags.each do |tag| %>
+          <% if tag.articles.published.any? %>
+            <div class="col-lg-4 col-sm-6">
+              <div class="card mb-2">
+                <%= link_to tag_path(tag), class: "badge badge-dark bg-ruby text-capitalize p-2" do %>
+                  <%= fa_icon("tags") %> <%= tag.name %>  <%#= tag.articles.published.count %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-4 col-12">
+      <%= render "shared/index_sidebar" %>
+    </div>
+  </div>
+</div>

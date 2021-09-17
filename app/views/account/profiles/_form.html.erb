@@ -1,0 +1,9 @@
+<%= bootstrap_form_with(model: [ :account, profile ], url: account_profile_path, local: true, label_errors: true) do |form| %>
+
+  <%= form.text_field :first_name %>
+  <%= form.text_field :last_name %>
+
+
+  <%= link_to "Cancel", account_root_path, class: "btn btn-link float-right" %>
+  <%= form.submit "Save", class: "btn btn-success px-4 float-right" %>
+<% end %>

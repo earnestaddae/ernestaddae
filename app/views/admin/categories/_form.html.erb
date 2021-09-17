@@ -1,0 +1,6 @@
+<%= bootstrap_form_with(model: [ :admin, category ], local: true, label_errors: true) do |form| %>
+  <%= form.text_field :name, placeholder: "Tutorial title" %>
+  <%= form.text_area :description, label: "Description", placeholder: "Description" %>
+
+  <%= form.primary %>
+<% end %>

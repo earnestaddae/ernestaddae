@@ -1,0 +1,39 @@
+<% title @user %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-12">
+      <div class="col-6 mx-auto">
+        <%= image_tag("https://www.dropbox.com/s/hnft0ev0td9dzwf/children.jpg?dl=1", class: "rounded img-fluid") %>
+      </div>
+      <div class="col text-center mt-4">
+        <h1>About <%= @user&.full_name %></h1>
+        <!-- <ul class="list-inline">
+        <li class="list-inline-item">
+          <%#= link_to "#" do %>
+           <i class="fa fa-github-square"></i> <%#= @user&.profile&.github %>
+          <%# end %>
+        </li>
+        </ul> -->
+      </div>
+      <div class="col-12 text-justify">
+        <%= markdown(@user&.profile&.bio) %>
+      </div>
+      <!-- <div class="col-12 mt-3 mb-3"> -->
+        <h6>Subscribe below to get future posts from <%= @user %></h6>
+        <%= render partial: "subscriptions/form", locals: { user: @user } %>
+      <!-- </div> -->
+      <hr>
+      <div class="col-12">
+        <h2>Tutorials by <%= @user&.profile&.first_name %></h2>
+        <ul>
+          <% @user.authored_articles.each do |article| %>
+            <li><%= link_to article.title, article_path(article) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+     <div class="col-lg-4 col-12">
+      <%= render "shared/index_sidebar" %>
+    </div>
+  </div>
+</div>

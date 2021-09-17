@@ -1,0 +1,48 @@
+<% title "Ruby Basics" %>
+
+<div class="container start-content">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8 message">
+      <div class="message-body">
+        <h1 class="text-center my-5">
+          Are You Learning Ruby, But You’re Not Sure Where to Start and What the “Roadmap” Looks Like?
+        </h1>
+        <p class="h2 text-muted text-center my-5">
+          Go From Basic to Intermediate
+          <br>Ruby Knowledge
+        </p>
+        <p>Learning how to program or getting started with a new language isn’t easy:</p>
+        <p>I’m sure your head is spinning from all the new concepts you need to ingest, and the influx of information can feel overwhelming at times.</p>
+        <p>But first of all, congratulations for choosing Ruby and welcome to the community! 😊 Ruby is a fantastic language to learn and work with. </p>
+        <p>Currently, it is also one of the most popular—and best paid—programming languages world-wide.</p>
+        <p>Ruby is also my favorite programming language by far and I’d love to help you on your Ruby journey.</p>
+        <p>Have a look at our Ruby tutorials and courses below and see what’s right for you.</p>
+
+        <h2 class="text-center my-5">
+          Check Out the Most Popular
+          <br>
+          Entry-Level Ruby Articles on Earnest Ruby:
+        </h2>
+        <p>We’re super passionate about teaching with articles and tutorials here on EarnestRuby.com—and we’d love to help you, too! We regularly cover topics around Ruby and software development in general. </p>
+
+        <p>Here’s some of our most popular content aimed at beginners:</p>
+
+        <ul>
+          <% @basics.each do |article| %>
+            <li><%= link_to article.capitalize_title, article_path(article), class: "card-link" %></li>
+          <% end %>
+        </ul>
+
+        <div class="alert alert-danger" role="alert">
+          <p>
+            <strong>Join Now:</strong>
+            <a href="" class="alert-link" data-toggle="modal" data-target="#modal-newsletter" data-focus="false">Click here to join the Earnest Ruby Newsletter</a> and you'll never miss another Ruby tutorial, course update, or post.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<%= render "shared/newsletter" %>

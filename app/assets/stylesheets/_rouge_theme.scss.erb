@@ -1,0 +1,107 @@
+<%= Rouge::Themes::ThankfulEyes.render(scope: '.highlight') %>
+
+
+// Overrides
+
+.highlight .c1 {
+   color: #9594af!important;
+   font-style: italic;
+}
+
+// // Custom Styles
+
+.ch {
+  height: 30px;
+  background-color: #e1e5e7;
+  max-width: 97%;
+  border-radius: 8px 8px 0 0;
+
+  &__comps {
+   display: inline-block;
+   padding-left: 10px;
+   }
+
+ &__comps span {
+   font-size: 1.7rem;
+   margin: 7px 0 0 5px;
+   font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+   }
+ }
+
+.btnc {
+   width: 17px;
+   height: 17px;
+   border-radius: 50%;
+   border: 1px solid #f5f5f5;
+   padding: 0 0 0 2px;
+   margin: 6px 2px 0 0;
+   cursor: default;
+
+   &--green {
+     background-color: #6ba83d;
+
+   &:hover {
+     background-color: #6ba83d;
+   }
+ }
+   &--yellow {
+     background-color: #e4b66a;
+
+   &:hover {
+     background-color: #e4b66a;
+   }
+ }
+   &--red {
+     background-color: #c95643;
+
+   &:hover {
+     background-color: #c95643;
+   }
+ }
+}
+
+// Rouge highlight class
+
+.highlight {
+ border-radius: 3px;
+ max-width: 98%;
+ box-sizing: content-box;
+ display: block;
+ margin: 0 0 3rem;
+}
+
+code,
+.code,
+pre {
+   overflow-x: scroll;
+   word-break: normal;
+   white-space: pre!important;
+   word-wrap: normal;
+   padding: 14px 23px 14px 13px !important;
+
+   & code {
+   line-height: 1.5;
+   white-space: pre-wrap;
+   margin-left: -12px;
+   }
+}
+
+code.prettyprint{
+  padding: 2px 4px !important;
+  font-size: 90%;
+  color: #c7254e;
+  border-radius: 4px;
+  background-color: #F9F2F4 ;
+}
+
+mark, .mark {
+  border-radius: 5px;
+  background-color: #e2bd78;
+}
+
+<%# p { %>
+  img {
+    width: 100%;
+  }
+<%# } %>
+

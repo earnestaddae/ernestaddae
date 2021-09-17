@@ -1,0 +1,39 @@
+<% title "Writer Dashboard" %>
+
+<div class="container">
+  <div class="row mb-2">
+    <div class="col-sm-6">
+      <h4 class="m-3">Welcome</h4>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <h3>Your Tutorials</h3>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% current_user.authored_articles.each do |article| %>
+        <div class="col-sm-6 col-lg-4">
+          <div class="card">
+            <%= image_tag("https://www.dropbox.com/s/ct1tog1jlao40ff/banner.png?dl=1", class: "card-img-top") %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to article.title.capitalize, article_path(article), class: "card-link text-capitalize font-weight-bold" %></h5>
+              <p class="card-text"><%= article.summary %></p>
+              <!-- <p> -->
+                <%= link_to "Edit", edit_writer_article_path(article), class: "card-link text-danger" %>
+                <%= link_to "Delete", writer_article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "card-link" %>
+              <!-- </p> -->
+                <span class="float-right"><%= article_mode(article) %></span>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Last updated <%= time_ago_in_words(article.updated_at) %> ago</small>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

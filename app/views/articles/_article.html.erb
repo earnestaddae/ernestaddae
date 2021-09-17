@@ -1,0 +1,33 @@
+<!-- <div class="col-12 col-md-6 col-lg-4 mb-5"> -->
+  <div class="card border-0">
+    <%= link_to article_path(article) do %>
+     <div class="card-img">
+          <% if article.attachment.attached? %>
+            <%= image_tag(article.attachment, class: "card-img-top m-0 p-0 rounded") %>
+          <% else %>
+            <%= image_tag("https://www.dropbox.com/s/ct1tog1jlao40ff/banner.png?dl=1", class: "card-img-top m-0 p-0 rounded") %>
+          <% end %>
+        </div>
+    <% end %>
+    <div class="card-body m-0 p-0 mt-2">
+      <%= link_to article_path(article) do %>
+        <h2 class="card-title h4 my-0 py-0 text-capitalize"><%= article.title %></h2>
+      <% end %>
+
+      <p class="card-text">
+        <small class="text-muted">
+        <span class="mr-2"><%= article&.published_at&.strftime("%b %e, %Y") %></span>
+        <span class="mr-2"><%= article&.author&.full_name %></span>
+        <span class="ml-2 fa fa-list-alt"></span> <%= link_to article&.category&.name, category_path(article.category), class: "badge badge-danger p-1" %>
+
+        <% if article.tags.any? %>
+          <span class="tags">
+           <i class="fa fa-tags ml-2"></i> <%= render article.tags %>
+          </span>
+        <% end %>
+        </small>
+      </p>
+    </div>
+  </div>
+<!-- </div> -->
+

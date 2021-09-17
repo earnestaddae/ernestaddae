@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+
+    <%= render "shared/favorite_sidebar" %>
+
+    <section class="col-md-11 col-lg-8 article">
+      <div class="mt-1 mb-4">
+        <div class="d-flex align-items-center justify-content-between">
+          <span class="text-muted">
+            <strong><%= pluralize(@bookmarks.count, "tutorial") %> bookmarked </strong>
+          </span>
+        </div>
+      </div>
+
+      <div class="articles">
+        <% @bookmarks.each do |bookmark| %>
+          <%= render bookmark %>
+        <% end %>
+      </div>
+
+    </section>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="d-flex mb-5">
+  <%= form_with url: search_index_path, method: :get, html: { class: "form-inline col pl-0", id: "home-search-form" } do |form| %>
+    <%= link_to search_index_path, title: "Search", class: "position-absolute" do %>
+      <i class="fa fa-search fa-fw text-muted pl-2"></i>
+    <% end %>
+    <%= form.text_field :query, class: "form-control form-control-lg w-100", style: "padding-left: 2rem;", maxlength: 50, placeholder: "Find Tutorials…", aria_label: "Search" %>
+    <%#= form.hidden_field :_form %>
+  <% end %>
+  <button class="btn btn-danger col-3 px-2" type="submit" form="home-search-form">Search&nbsp;&#187;</button>
+</div>

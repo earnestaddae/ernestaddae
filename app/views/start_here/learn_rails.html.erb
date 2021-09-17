@@ -1,0 +1,46 @@
+<% title "Learn Ruby on Rails" %>
+
+<div class="container start-content">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8 message">
+      <div class="message-body">
+        <p class="h2 text-muted text-center my-5">You Already Have Experience With  <br> The Ruby Language</p>
+        <h2 class="text-center my-5">
+          How You Can Turbo Charge Ruby And
+          <br>
+          Get Up to Speed With Rails
+          <br>
+          as Quickly as Possible
+        </h2>
+
+        <p class="h2 text-muted text-center my-5">Take Advantage of Your Ruby Skills &amp; Start Writing Web Applications</p>
+
+        <h2 class="text-center my-5">
+          Check Out the Most Popular
+          <br>
+          Ruby on Rails Articles on Earnest Ruby:
+        </h2>
+
+        <p>We’re super passionate about teaching with articles and tutorials here on earnestruby.com—and we’d love to help you, too! We regularly cover topics around Ruby and software development in general. </p>
+
+        <p>Here’s some of our most popular content aimed on the Ruby on Rails web application framework:</p>
+
+        <ul>
+          <% @rails.each do |article| %>
+            <li><%= link_to article.capitalize_title, article_path(article), class: "card-link" %></li>
+          <% end %>
+        </ul>
+
+        <div class="alert alert-danger" role="alert">
+          <p>
+            <strong>Join Now:</strong>
+            <a href="" class="alert-link" data-toggle="modal" data-target="#modal-newsletter" data-focus="false">Click here to join the Earnest Ruby Newsletter</a> and you'll never miss another Ruby tutorial, course update, or post.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<%= render "shared/newsletter" %>

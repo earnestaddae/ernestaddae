@@ -1,0 +1,71 @@
+<% title "Your Account" %>
+
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10 col-lg-7 article">
+    <div class="article-body">
+      <h1 class="text-center mb-4">Your Account</h1>
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 offset-lg-2">
+          <div class="media">
+            <%= gravatar_image_tag(current_user.email, :alt => current_user, class: "align-self-center img-fluid rounded rounded-circle mr-2 my-0 gravatar_image_article") %>
+
+            <p class="align-self-center p-0 m-0">
+              <strong><%= current_user %></strong>
+              <br><%= current_user.email %>
+            </p>
+          </div>
+
+          <h4 class="border-bottom mt-5"><i class="fa fa-star text-danger"></i> Membership Status</h4>
+          <!-- <div class="alert alert-danger mt-3"> -->
+            <!-- <p> -->
+             <!--  <span class="text-danger">
+                <i class="fa fa-times" aria-hidden="true"></i>
+                <strong>Not Subscribed:</strong></span> Pick a membership option to access members-only video courses, tutorials, the Earnest Ruby Community, and much more. -->
+                <%#= link_to "Click here to learn more \u00BB", "#", class: "alert-link" %>
+                <!-- <a href="/account/join/" class="alert-link">Click here to learn more »</a> -->
+            <!-- </p> -->
+          <!-- </div> -->
+
+          <h4 class="border-bottom mt-5">Public Information</h4>
+          <p class="text-muted">Displayed when you post comments or reply to someone else’s comment.</p>
+          <%= render "account/users/form", user: @user %>
+
+          <h4 class="border-bottom mt-5">Private Information</h4>
+          <p class="text-muted">Not shown publicly by default. Used for completion certificates and how we greet you in emails and on the website.</p>
+          <%= render "account/profiles/form", profile: @profile %>
+
+          <h4 class="border-bottom mt-5">Notification Settings</h4>
+          <p class="text-muted">Customize how often we update you about new content and discussions you participated in. Please note this setting won’t affect any additional email newsletters from us you might be subscribed to.</p>
+
+          <%# <h4 class="border-bottom mt-5">Slack Community</h4> %>
+          <%# <p class="text-muted">Join the Earnest Ruby Slack chat and meet the Earnest Ruby Team and other subscribers. Discuss your coding and career questions, vote on upcoming tutorial topics, or just hang out with us at this virtual water cooler:</p> %>
+          <%# <div class="alert alert-danger mt-3"> %>
+            <%# <p> %>
+              <%# <span class="text-danger"><i class="fa fa-times" aria-hidden="true"></i> <strong>Members-only:</strong></span> Pick a membership option to access members-only video courses, tutorials, the Earnest Ruby Slack Community, and much more. = link_to "Click here to learn more \u00BB", "#", class: "alert-link" %>
+            <%# </p> %>
+          <%# </div> %>
+
+          <h4 class="border-bottom mt-5">Share Your Feedback &amp; Ideas</h4>
+          <p class="text-muted">We're always looking to improve your learning experience to help you become a better programmer. If you have positive or critical feedback for us, feature or tutorial requests, please send them our way:</p>
+          <%= link_to new_feedback_path, class: "btn btn-link" do  %>
+            <i class="fa fa-fw fa-commenting-o"></i> Share Your Feedback
+          <% end %>
+
+          <h4 class="border-bottom mt-5">Get Support</h4>
+          <p class="text-muted">Do you have a question that's not covered here? Check out the Earnest Support Portal where we answer commonly asked questions about the membership and course platform:</p>
+
+          <%= mail_to "earnestaddae@gmail.com", class: "btn-link" do %>
+            <i class="fa fa-fw fa-question-circle"></i> Support Email
+          <% end %>
+
+          <h4 class="border-bottom mt-5">Other Settings</h4>
+          <%= link_to "Change Password", edit_user_registration_path %> <br>
+          <%#= link_to "Manage Email Addresses", "#" %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+          <div class="mb-5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

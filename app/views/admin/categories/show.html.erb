@@ -1,0 +1,14 @@
+<div class="container">
+  <header>
+    <h1><%= @category.name %></h1>
+
+    <ul class="actions">
+      <li>
+        <%= link_to "Edit Category", edit_admin_category_path(@category), class: "edit" %>
+      </li>
+      <li>
+      <%= link_to "Delete Category", admin_category_path(@category), method: :delete, data: { confirm: "Are you sure you want to delete this category?" }, class: "delete" %>
+    </li>
+    </ul>
+  </header>
+</div>

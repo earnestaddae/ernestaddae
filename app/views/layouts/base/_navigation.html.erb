@@ -1,0 +1,123 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column bg-ruby">
+  <div class="container flex-row">
+    <a class="brand" href="/">
+      <%# <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg" width="25" height="30" class="d-inline-block align-middle" alt=""> %>
+      Ernest Addae
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-2 flex-fill">
+        <%# <li class="nav-item"> %>
+          <!-- <a class="nav-link text-light <%#= active?(start_path) %>" href="<%#= start_path %>">Start&nbsp; Here <span class="sr-only">(current)</span></a> -->
+        <%# </li> %>
+        <li class="nav-item dropdown" style="color: #ff7e73;">
+          <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-graduation-cap mr-1"></i> Articles
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <a class="dropdown-item" href="<%= articles_path %>">
+              <span class="tutorials-link"><i class="fa fa-graduation-cap mr-1"></i> Tutorials</span>
+               <!-- <br> -->
+               <!-- <small>In-depth tutorial articles</small> -->
+            </a>
+
+           <!--  <a class="dropdown-item" href="#">
+              <span class="screencasts-link"><i class="fa fa-video-camera mr-1"></i>Screencasts</span>
+               <br>
+               <small>In-depth video tutorials</small>
+            </a> -->
+
+          <!--   <a class="dropdown-item" href="#">
+              <span class="videos-link"><i class="fa fa-fw fa-film mr-1"></i>Video Courses</span>
+               <br>
+               <small>Step-by-step in-depth video lessons</small>
+            </a> -->
+
+            <a class="dropdown-item" href="<%= categories_path %>">
+             <span class="categories-link"><i class="fa fa-list mr-1"></i> Categories</span>
+              <!-- <br> -->
+              <!-- <small>Focus on specific categories</small> -->
+            </a>
+
+            <a class="dropdown-item" href="<%= tags_path %>">
+             <span class="topics-link"><i class="fa fa-tags mr-1"></i> Topics</span>
+              <!-- <br> -->
+              <!-- <small>Focus on specific topics</small> -->
+            </a>
+
+            <!-- <a class="dropdown-item" href="#">
+             <span class="quizzes-link"><i class="fa fa-trophy mr-1"></i> Quizzes</span>
+              <br>
+              <small>Check your learning progress</small>
+            </a> -->
+          </div>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%= newsletters_path %>"><i class="fa fa-newspaper-o mr-1"></i> Join Newsletter</a>
+            <!-- <a class="dropdown-item" href="<%#= users_path %>"><i class="fa fa-users mr-1"></i> Meet the Team</a> -->
+            <!-- <a class="dropdown-item" href="#"><i class="fa fa-fw fa-building mr-1"></i> Office Hours</a> -->
+            <!-- <a class="dropdown-item" href="#"><i class="fa fa-fw mr-1 fa-slack"></i> Community</a> -->
+            <!-- <a class="dropdown-item" href="#"><i class="fa fa-fw mr-1 fa-podcast"></i> Podcast</a> -->
+            <!-- <a class="dropdown-item" href="#"><i class="fa fa-fw mr-1 fa-book"></i> Books</a> -->
+            <!-- <div class="dropdown-divider p-0 m-0"></div> -->
+            <!-- <a class="dropdown-item" href="<%#= with_us_path %>"> <i class="fa fa-pencil-square-o mr-1"></i> Become a Tutorial Author</a> -->
+          </div>
+        </li>
+      </ul>
+      <%= form_with url: search_index_path, method: :get, html: { class: "form-inline my-2 my-lg-0" } do |form| %>
+        <%= form.text_field :query, class: "form-control-lg mr-sm-2 bg-ruby border text-white", placeholder: "Search" %>
+        <%#= form.submit "Search" %>
+      <% end %>
+      <ul class="navbar-nav nav justify-content-end">
+        <% unless user_signed_in? %>
+          <li class="nav-item form-inline ml-2">
+            <%= link_to "Join", new_user_registration_path, class: "nav-link text-light my-2 my-lg-0 btn-md btn btn-dark px-3" %>
+          </li>
+          <li class="nav-item form-inline ml-2">
+            <%= link_to "Sign-In", new_user_session_path, class: "nav-link text-light" %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li class="nav-item form-inline ml-2">
+            <%= link_to "Write", new_writer_article_path, class: "nav-link text-light my-2 my-lg-0 btn-md btn btn-dark px-3" if current_user.try(:admin?) || current_user.has_role?(:writer) %>
+          </li>
+          <% admins_only do  %>
+          <li class="nav-item form-inline ml-2">
+            <%= link_to "Admin", admin_root_path, class: "nav-link text-light my-2 my-lg-0 btn-md btn px-3" %>
+          </li>
+          <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= gravatar_image_tag(current_user.email, :alt => current_user, class: "gravatar_image") %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% if current_user.try(:admin?) || current_user.has_role?(:writer) %>
+                <%= link_to writer_root_path, class: "dropdown-item" do %>
+                  <i class="fa fa-fw fa-tachometer"></i> Dashboard
+                <% end %>
+                <%= link_to new_writer_article_path, class: "dropdown-item" do %>
+                  <i class="fa fa-fw fa-edit"></i> Write a Tutorial
+                <% end %>
+              <% end %>
+              <%= link_to account_root_path, class: "dropdown-item" do %>
+                <i class="fa fa-fw fa-sliders"></i> Manage Account
+              <% end %>
+              <div class="dropdown-divider p-0 m-0"></div>
+              <%= link_to destroy_user_session_path, class: "dropdown-item" , method: :delete do  %>
+                <i class="fa fa-fw fa-sign-out"></i> Log Out
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

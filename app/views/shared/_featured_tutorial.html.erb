@@ -1,0 +1,35 @@
+<div class="card border-0">
+  <div class="card-img">
+    <%= link_to article_path(featured) do %>
+      <% if featured.attachment.attached? %>
+        <%= image_tag(featured.attachment, class: "card-img-top m-0 p-0 rounded") %>
+      <% else %>
+        <%= image_tag("https://www.dropbox.com/s/ct1tog1jlao40ff/banner.png?dl=1", class: "card-img-top m-0 p-0 rounded") %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="card-body m-0 p-0 pt-3">
+    <%= link_to article_path(featured) do  %>
+      <h2 class="card-title h2 my-0 py-0 text-capitalize"><%= featured&.title %></h2>
+    <% end %>
+    <p class="my-1">
+      <%= featured.summary %>
+    </p>
+
+    <p class="card-text">
+      <small class="text-muted">
+      <span class="mr-2"><%= featured&.published_at&.strftime("%b %e, %Y") %></span>
+      <span class="mr-2"><%= featured&.author&.full_name %></span>
+      <span class="ml-2 fa fa-list-alt"></span> <%= link_to featured&.category.name, category_path(featured.category), class: "badge badge-danger p-2" %>
+
+      <% if featured.tags.any? %>
+        <span class="tags">
+         <i class="fa fa-tags ml-2"></i> <%= render featured.tags %>
+        </span>
+      <% end %>
+
+      </small>
+    </p>
+
+  </div>
+</div>
