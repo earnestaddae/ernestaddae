@@ -14,4 +14,4 @@ This is complete Rails application built from scratch for my personal blogging w
 2. Please visit the localhost as this **http://localhost:3000/**
 
 ## Project homepage
-![Personal Blog](https://www.dropbox.com/s/qxzy2y6bd3wef1e/blog.png?dl=1)
+![Personal Blog](https://www.dropbox.com/s/qxzy2y6bd3wef1e/blog.png)
