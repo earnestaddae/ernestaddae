@@ -43,6 +43,8 @@ For easy things like **liking**, **sharing**, and **tagging** articles I avoided
 ## Project homepage
 ![Personal Blog](https://github.com/earnestaddae/ernestaddae/blob/main/app/assets/images/blog.png)
 
+![Writer's Dashboard](https://github.com/earnestaddae/ernestaddae/blob/main/app/assets/images/dashboard.png)
+
 ## Attributions
 This application wouldn't have been possible without a wonderful web framework like [Ruby on Rails](https://rubyonrails.org/), an expressive language like [Ruby](https://www.ruby-lang.org/en/), accessible [RubyGems](https://rubygems.org/), and the community of selfless Rubyists.
 
