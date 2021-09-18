@@ -1,12 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
   # prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
 
-  # include DeviseAccessible
-  # skip_before_action :check_user, only: :destroy
-
-  # def create
-  #   super
-  # end
 
 
    private
