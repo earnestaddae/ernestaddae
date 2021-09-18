@@ -46,3 +46,8 @@ For easy things like **liking**, **sharing**, and **tagging** articles I avoided
 ## Attributions
 This application wouldn't have been possible without a wonderful web framework like [Ruby on Rails](https://rubyonrails.org/), an expressive language like [Ruby](https://www.ruby-lang.org/en/), accessible [RubyGems](https://rubygems.org/), and the community of selfless Rubyists.
 
+## Contributions & Issues
+Whenever, I find something interesting to add, I will do so. You are welcome to use this project as you want. 
+
+However, if there are features you want added that will be beneficial to others, you can add it and issue a [PR](https://github.com/earnestaddae/ernestaddae/pulls). Furthermore, if you want a feature, but can't build yourself, [create an issue](https://github.com/earnestaddae/ernestaddae/issues) and I will try to add in due time.
+
