@@ -4,7 +4,7 @@ This is complete Rails application built from scratch for my personal blogging w
 
 The idea for building this application was inspired by [Real Python](https://realpython.com/). Therefore, most of the features in the application were borrowed from Real Python
 
-The nature of the application requires that I `modularize` most of the features from the start via `[namespacing](https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing)`
+The nature of the application requires that I `modularize` most of the features from the start via [namespacing](https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing)
 
 For easy things like **liking**, **sharing**, and **tagging** articles I avoided gems such as ActsAsVotable or ActsAsTaggableOn.
 
@@ -42,4 +42,7 @@ For easy things like **liking**, **sharing**, and **tagging** articles I avoided
 
 ## Project homepage
 ![Personal Blog](https://github.com/earnestaddae/ernestaddae/blob/main/app/assets/images/blog.png)
+
+## Attributions
+This application wouldn't have been possible without a wonderful web framework like [Ruby on Rails](https://rubyonrails.org/), an expressive language like [Ruby](https://www.ruby-lang.org/en/), accessible [RubyGems](https://rubygems.org/), and the community of selfless Rubyists.
 
